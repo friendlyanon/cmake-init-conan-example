@@ -1,7 +1,7 @@
 # cmake-init + Conan
 
 This is an example repository showcasing [Conan][1] integration with
-[cmake-init][2] generated projects downloading dependencies from GitHub.
+[cmake-init][2] generated projects.
 
 The list of changes to make when integrating with Conan:
 
@@ -11,8 +11,8 @@ The list of changes to make when integrating with Conan:
 * Inherit from the above preset in your [CI](CMakePresets.json#L57) and [dev
   presets](HACKING.md#L44)
 * Mention in [`HACKING.md`](HACKING.md#L60) that the project uses Conan
-* Mention in [`BUILDING.md`](BUILDING.md#L3) that the project provides Conan
-  for its dependencies and it is one option to use it
+* Mention in [`BUILDING.md`](BUILDING.md#L3) that the project provides a Conan
+  script for its dependencies and it is one option to use
 * Install Conan in the [CI](.github/workflows/ci.yml#L12-L16) workflow
 
 Every other change in the repository was made just to make this repository more
