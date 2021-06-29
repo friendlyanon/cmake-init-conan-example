@@ -1,0 +1,26 @@
+name: Continuous Integration
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - uses: actions/setup-python@v2
+      with: { python-version: "3.8" }
+
+    - name: Install conan
+      run: pip3 install conan
+
+    - name: Configure
+      run: cmake --preset=ci-ubuntu
+
+    - name: Build
+      run: cmake --build build -j 2
+
+    - name: Test
+      working-directory: build
+      run: ctest --output-on-failure -j 2
