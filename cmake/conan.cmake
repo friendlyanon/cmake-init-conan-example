@@ -2,13 +2,17 @@
 
 set(conan_cmake_path "${PROJECT_BINARY_DIR}/_conan/conan.cmake")
 set(conan_cmake_prefix "${PROJECT_BINARY_DIR}/_conan/configs")
+# v0.16.1 is missing a feature that enabled conan_cmake_autodetect() to receive
+# the BUILD_TYPE argument, so instead of using that version, grab a version
+# from the develop branch that has this feature. This should eventually be
+# switched to v0.17.0. See https://github.com/conan-io/cmake-conan/issues/336
 set(conan_cmake_url "https://raw.githubusercontent.com/conan-io/cmake-conan/\
-v0.16.1/conan.cmake")
+3b17ecedade832ea0cd6a73654399ea03341297d/conan.cmake")
 if(NOT EXISTS "${conan_cmake_path}")
   file(
       DOWNLOAD "${conan_cmake_url}" "${conan_cmake_path}"
       EXPECTED_HASH
-      SHA256=396e16d0f5eabdc6a14afddbcfff62a54a7ee75c6da23f32f7a31bc85db23484
+      SHA256=ddf0fafacf48b5c4912ecce5701c252532437c40277734cad5f4a8084470adbc
       TLS_VERIFY ON
       STATUS status
   )
@@ -45,12 +49,8 @@ endif()
 
 conan_cmake_configure(GENERATORS CMakeDeps REQUIRES ${conan_requires})
 
-# The loop variable is called CMAKE_BUILD_TYPE, because
-# conan_cmake_autodetect() does not honor the BUILD_TYPE argument and when the
-# generator is multi-config, then there is no point in setting that variable,
-# but this command tries to read it regardless
-foreach(CMAKE_BUILD_TYPE IN LISTS CONAN_CMAKE_BUILD_TYPES)
-  conan_cmake_autodetect(conan_cmake_settings)
+foreach(type IN LISTS CONAN_CMAKE_BUILD_TYPES)
+  conan_cmake_autodetect(conan_cmake_settings BUILD_TYPE "${type}")
 
   conan_cmake_install(
       PATH_OR_REFERENCE .
@@ -59,7 +59,6 @@ foreach(CMAKE_BUILD_TYPE IN LISTS CONAN_CMAKE_BUILD_TYPES)
       SETTINGS ${conan_cmake_settings}
   )
 endforeach()
-unset(CMAKE_BUILD_TYPE)
 
 # ---- Make Conan installed dependencies available ----
 
