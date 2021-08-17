@@ -62,8 +62,8 @@ endforeach()
 
 # ---- Make Conan installed dependencies available ----
 
-set(cmake_prefix_paths "$CACHE{CMAKE_PREFIX_PATH}")
-if(NOT conan_cmake_prefix IN_LIST cmake_prefix_paths)
-  list(APPEND cmake_prefix_paths "${conan_cmake_prefix}")
-  set(CMAKE_PREFIX_PATH "${cmake_prefix_paths}" CACHE STRING "" FORCE)
+set(cache_prefix_paths "$CACHE{CMAKE_PREFIX_PATH}")
+if(NOT conan_cmake_prefix IN_LIST cache_prefix_paths)
+  list(APPEND cache_prefix_paths "${conan_cmake_prefix}")
+  set(CMAKE_PREFIX_PATH "${cache_prefix_paths}" CACHE STRING "" FORCE)
 endif()
