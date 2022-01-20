@@ -9,7 +9,7 @@ include(GNUInstallDirs)
 set(package conan-example)
 
 install(
-    TARGETS conan-example_conan-example
+    TARGETS conan-example_exe
     EXPORT conan-exampleTargets
     RUNTIME COMPONENT conan-example_Runtime
 )
@@ -21,8 +21,8 @@ write_basic_package_version_file(
 
 # Allow package maintainers to freely override the path for the configs
 set(
-    conan-example_INSTALL_CMAKEDIR "${CMAKE_INSTALL_LIBDIR}/cmake/${package}"
-    CACHE STRING "CMake package config location relative to the install prefix"
+    conan-example_INSTALL_CMAKEDIR "${CMAKE_INSTALL_DATADIR}/${package}"
+    CACHE PATH "CMake package config location relative to the install prefix"
 )
 mark_as_advanced(conan-example_INSTALL_CMAKEDIR)
 

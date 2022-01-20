@@ -1,7 +1,9 @@
 .idea/
+.vs/
+.vscode/
 build/
 cmake-build-*/
+conan/
 prefix/
 CMakeLists.txt.user
 CMakeUserPresets.json
-project-include-after.cmake

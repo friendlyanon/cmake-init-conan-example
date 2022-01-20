@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-include(cmake/in-source-guard.cmake)
+include(cmake/prelude.cmake)
 
 project(
     conan-example
@@ -21,7 +21,7 @@ add_library(
 )
 
 target_include_directories(
-    conan-example_lib
+    conan-example_lib ${warning_guard}
     PUBLIC
     "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/source>"
 )
@@ -34,22 +34,24 @@ target_link_libraries(conan-example_lib PRIVATE fmt::fmt)
 
 # ---- Declare executable ----
 
-add_executable(conan-example_conan-example source/main.cpp)
-add_executable(conan-example::conan-example ALIAS conan-example_conan-example)
+add_executable(conan-example_exe source/main.cpp)
+add_executable(conan-example::exe ALIAS conan-example_exe)
 
 set_target_properties(
-    conan-example_conan-example PROPERTIES
+    conan-example_exe PROPERTIES
     OUTPUT_NAME conan-example
-    EXPORT_NAME conan-example
+    EXPORT_NAME exe
 )
 
-target_compile_features(conan-example_conan-example PRIVATE cxx_std_17)
+target_compile_features(conan-example_exe PRIVATE cxx_std_17)
 
-target_link_libraries(conan-example_conan-example PRIVATE conan-example_lib)
+target_link_libraries(conan-example_exe PRIVATE conan-example_lib)
 
 # ---- Install rules ----
 
-include(cmake/install-rules.cmake)
+if(NOT CMAKE_SKIP_INSTALL_RULES)
+  include(cmake/install-rules.cmake)
+endif()
 
 # ---- Developer mode ----
 

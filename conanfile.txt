@@ -1,0 +1,9 @@
+[requires]
+fmt/8.0.0
+# testing only deps below
+doctest/2.4.6
+
+[generators]
+CMakeToolchain
+CMakeDeps
+VirtualRunEnv

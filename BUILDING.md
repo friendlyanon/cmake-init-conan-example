@@ -1,37 +1,20 @@
 # Building with CMake
 
-## Conan dependencies
+## Dependencies
 
-This project uses Conan to install some dependencies, but it is optional to
-use. You may also install those dependencies manually or using any other
-package manager, however a script file is already provided to use Conan and
-makes automatic dependency management easier.
-
-If you have Conan set up, then you have to provide an extra flag to the
-configure command, which differs only in how you provide the paths depending on
-your OS:
-
-```batch
-rem Windows
--D "CMAKE_PROJECT_conan-example_INCLUDE=%cd:\=/%/cmake/conan.cmake"
-```
-
-```sh
-# Unix based (Linux, macOS)
--D "CMAKE_PROJECT_conan-example_INCLUDE=$PWD/cmake/conan.cmake"
-```
+All the dependencies are listed in the [conanfile](conanfile.txt) of this
+project. See [Conan](https://conan.io/) for details if you wish to use it.
 
 ## Build
 
-Besides the one for Conan dependencies (if you choose to provide them to the
-project using Conan), this project doesn't require any special command-line
-flags to build to keep things simple.
+This project doesn't require any special command-line flags to build to keep
+things simple.
 
 Here are the steps for building in release mode with a single-configuration
 generator, like the Unix Makefiles one:
 
 ```sh
-cmake -S . -B build -D CMAKE_BUILD_TYPE=Release # Conan flag
+cmake -S . -B build -D CMAKE_BUILD_TYPE=Release
 cmake --build build
 ```
 
@@ -39,7 +22,7 @@ Here are the steps for building in release mode with a multi-configuration
 generator, like the Visual Studio ones:
 
 ```sh
-cmake -S . -B build # Conan flag
+cmake -S . -B build
 cmake --build build --config Release
 ```
 
