@@ -29,7 +29,6 @@ target_include_directories(
 target_compile_features(conan-example_lib PUBLIC cxx_std_17)
 
 find_package(fmt REQUIRED)
-
 target_link_libraries(conan-example_lib PRIVATE fmt::fmt)
 
 # ---- Declare executable ----
@@ -37,11 +36,7 @@ target_link_libraries(conan-example_lib PRIVATE fmt::fmt)
 add_executable(conan-example_exe source/main.cpp)
 add_executable(conan-example::exe ALIAS conan-example_exe)
 
-set_target_properties(
-    conan-example_exe PROPERTIES
-    OUTPUT_NAME conan-example
-    EXPORT_NAME exe
-)
+set_property(TARGET conan-example_exe PROPERTY OUTPUT_NAME conan-example)
 
 target_compile_features(conan-example_exe PRIVATE cxx_std_17)
 
@@ -64,7 +59,4 @@ elseif(NOT PROJECT_IS_TOP_LEVEL)
   )
 endif()
 
-include(CTest)
-if(BUILD_TESTING)
-  add_subdirectory(test)
-endif()
+include(cmake/dev-mode.cmake)

@@ -1,9 +1,9 @@
-#include <doctest/doctest.h>
-#include <lib.hpp>
+#include <catch2/catch_test_macros.hpp>
 
-TEST_CASE("lib")
+#include "lib.hpp"
+
+TEST_CASE("Name is conan-example", "[library]")
 {
-  library lib;
-
-  REQUIRE_EQ(lib.name, "conan-example");
+  auto const lib = library {};
+  REQUIRE(lib.name == "conan-example");
 }

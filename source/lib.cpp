@@ -1,7 +1,8 @@
+#include "lib.hpp"
+
 #include <fmt/core.h>
-#include <lib.hpp>
 
 library::library()
-    : name(fmt::format("{}", "conan-example"))
+    : name {fmt::format("{}", "conan-example")}
 {
 }

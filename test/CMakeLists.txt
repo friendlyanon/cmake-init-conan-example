@@ -4,20 +4,23 @@
 
 project(conan-exampleTests LANGUAGES CXX)
 
-find_package(doctest REQUIRED)
-include(doctest)
+# ---- Dependencies ----
+
+find_package(Catch2 REQUIRED)
+include(Catch)
+
+# ---- Tests ----
 
 add_executable(conan-example_test source/conan-example_test.cpp)
-set_property(
-    SOURCE source/conan-example_test.cpp APPEND PROPERTY
-    COMPILE_DEFINITIONS DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-)
 target_link_libraries(
-    conan-example_test
-    PRIVATE
+    conan-example_test PRIVATE
     conan-example_lib
-    doctest::doctest
+    Catch2::Catch2WithMain
 )
 target_compile_features(conan-example_test PRIVATE cxx_std_17)
 
-doctest_discover_tests(conan-example_test ADD_LABELS NO)
+catch_discover_tests(conan-example_test)
+
+# ---- End-of-file commands ----
+
+add_folders(Test)
