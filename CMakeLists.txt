@@ -23,7 +23,7 @@ add_library(
 target_include_directories(
     conan-example_lib ${warning_guard}
     PUBLIC
-    "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/source>"
+    "\$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/source>"
 )
 
 target_compile_features(conan-example_lib PUBLIC cxx_std_17)
