@@ -4,15 +4,11 @@ PS4='\033[1;34m>>>\033[0m '
 
 set -xeu
 
-pip3 install conan!=2.1.0
+pip3 install conan
 
 conan profile detect -f
 
 std=17
-if [ "$RUNNER_OS" = Windows ]; then
-  std=17
-fi
-
 profile="$(conan profile path default)"
 
 mv "$profile" "${profile}.bak"

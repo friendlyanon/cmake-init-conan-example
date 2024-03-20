@@ -2,8 +2,9 @@
     "version": "0.5",
     "requires": [
         "fmt/10.2.1#9199a7a0611866dea5c8849a77467b25%1704415120.216",
-        "catch2/3.5.2#9554dc3c4ffcab50daf8f2cac4b79308%1705365891.626"
+        "catch2/3.5.3#2178a424c7c53da1e7df5fef1a051f1f%1709377594.339"
     ],
     "build_requires": [],
-    "python_requires": []
+    "python_requires": [],
+    "config_requires": []
 }
