@@ -1,8 +1,8 @@
 {
     "version": "0.5",
     "requires": [
-        "fmt/10.2.1#9199a7a0611866dea5c8849a77467b25%1704415120.216",
-        "catch2/3.6.0#819bc5a82c2cb626916fc18ee1dbc45f%1715098685.951"
+        "fmt/11.0.2#5c7438ef4d5d69ab106a41e460ce11f3%1721637745.688",
+        "catch2/3.7.0#70905dd442f2f2104ed34dab241b87a8%1723647717.823"
     ],
     "build_requires": [],
     "python_requires": [],
