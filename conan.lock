@@ -2,7 +2,7 @@
     "version": "0.5",
     "requires": [
         "fmt/11.0.2#5c7438ef4d5d69ab106a41e460ce11f3%1721637745.688",
-        "catch2/3.7.0#70905dd442f2f2104ed34dab241b87a8%1723647717.823"
+        "catch2/3.7.1#431d772165ed0bc5adaabaa44a9f53ca%1726584452.35"
     ],
     "build_requires": [],
     "python_requires": [],
